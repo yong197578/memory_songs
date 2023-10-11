@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-
+import config
 while True:
     user_input = input("Which year do you want to travel to? Type the date in this format YYYY-MM-DD: ")
     if len(user_input) == 10 and user_input[4] == "-" and user_input[7] == "-":
@@ -21,8 +21,8 @@ sp = spotipy.Spotify(
     auth_manager=SpotifyOAuth(
         scope="playlist-modify-private",
         redirect_uri="http://example.com",
-        client_id="d1d8eaa0ba194400aed9ec80983cfdf9",
-        client_secret="1ecfee6f9f4d4104ac0d7892ece8fc85",
+        client_id=config.spotify_client_id,
+        client_secret=config.spotify_secret_key,
         show_dialog=True,
         cache_path="token.txt",
     )
